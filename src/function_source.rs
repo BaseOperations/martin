@@ -53,6 +53,8 @@ impl Source for FunctionSource {
             query_params = query_json_string
         );
 
+        info!("sql query {}", query);
+
         let tile: Tile = conn
             .query_one(query.as_str(), &[])
             .map(|row| row.get(self.function.as_str()))
